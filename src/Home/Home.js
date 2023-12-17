@@ -8,6 +8,7 @@ const Home = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [showRecommendationDialog, setShowRecommendationDialog] = useState(false);
   const mobileViewRef = useRef(null);
+  const filterRef = useRef(null);
 
   const toggleFilter = () => {
     setShowFilter(!showFilter);
@@ -21,17 +22,21 @@ const Home = () => {
     if (mobileViewRef.current && !mobileViewRef.current.contains(event.target)) {
       setShowRecommendationDialog(false);
     }
+
+    if (filterRef.current && !filterRef.current.contains(event.target)) {
+      setShowFilter(false);
+    }
   };
 
   useEffect(() => {
-    if (showRecommendationDialog) {
+    if (showRecommendationDialog || showFilter) {
       document.addEventListener('mousedown', handleOutsideClick);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [showRecommendationDialog]);
+  }, [showRecommendationDialog, showFilter]);
 
   const [products, setProducts] = useState([]);
 
@@ -51,21 +56,21 @@ const Home = () => {
         </span>
         <span>
           <div className='recom-class'>
-          <span onClick={toggleRecommendationDialog} className='recomded'>Recommended</span>
-          <img src={down} alt='downImg' />
-          {showRecommendationDialog && (
-            <div className='mobileview' ref={mobileViewRef}>
-              <span>NEW FIRST</span>
-              <span>POPULAR</span>
-              <span>PRICE: HIGH TO LOW</span>
-              <span>PRICE: LOW TO HIGH</span>
-            </div>
-          )}
+            <span onClick={toggleRecommendationDialog} className='recomded'>Recommended</span>
+            <img src={down} alt='downImg' />
+            {showRecommendationDialog && (
+              <div className='mobileview' ref={mobileViewRef}>
+                <span>NEW FIRST</span>
+                <span>POPULAR</span>
+                <span>PRICE: HIGH TO LOW</span>
+                <span>PRICE: LOW TO HIGH</span>
+              </div>
+            )}
           </div>
         </span>
       </div>
       <div className='main-class' style={{ gridTemplateColumns: showFilter ? '20% 1fr' : '100%' }}>
-        {showFilter && <Filter />}
+        {showFilter && <Filter ref={filterRef} />}
         <div className='main-shop'>
           <Shop products={products} />
         </div>
