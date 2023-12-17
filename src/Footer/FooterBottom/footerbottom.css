@@ -1,0 +1,28 @@
+.footer-bottom{
+    color: white;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.first .info{
+    margin: 10px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+.third{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.third .info{
+    margin: 10px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.third:last-child .footer-title{
+    text-transform: none;
+}

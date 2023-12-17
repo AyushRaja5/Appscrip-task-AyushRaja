@@ -1,0 +1,121 @@
+.header-class {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.top-header {
+    height: 70px;
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    align-items: center;
+}
+
+.top-header .menu-icon {
+    display: none;
+}
+
+.LOGO-text {
+    font-weight: 700;
+    font-size: 36px;
+    justify-self: center;
+}
+
+.logo-img {
+    width: 36px;
+    height: 36px;
+}
+
+.icon-img {
+    width: 24px;
+    height: 24px;
+    margin-left: 24px;
+}
+
+.icons {
+    justify-self: flex-end;
+    align-self: center;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.bottom-header div {
+    width: 100%;
+    margin: 0 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 850px) {
+    .icons span {
+        display: none;
+    }
+
+    .bottom-header {
+        display: none;
+    }
+    .bottom-header div{
+        margin: 0;
+    }
+    .bottom-header.open {
+        display: flex;
+        background-color: #E5E5E5;
+        border-radius: 5px;
+        z-index: 1;
+        width: 50%;
+        padding: 5% 0;
+    }
+    .mobile-view{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        span{
+            font-size: 20px;
+            width: auto;
+            margin: 10px 0;
+        }
+    }
+    .top-header .menu-icon {
+        display: block;
+    }
+
+    .logos {
+        display: flex;
+        gap: 10px;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .logos img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .icon-img {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+    .LOGO-text {
+        font-size: 24px;
+    }
+}

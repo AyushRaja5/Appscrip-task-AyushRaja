@@ -1,0 +1,51 @@
+.footer-top{
+    color: white;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.footer-title{
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.first-top-footer .info{
+    margin: 20px 0 40px;
+    font-size: 16px;
+}
+
+input{
+    height: 46px;
+    width: 60%;
+    border: none;
+    padding: 20px;
+}
+button{
+    height: 48px;
+    background: transparent;
+    border: 2px solid rgb(87, 85, 85);
+    color: rgb(87, 85, 85);
+    padding: 0 5%;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.second{
+    margin-top: 25px;
+}
+.second-top-footer{
+    margin-left: 33%;
+}
+.second-top-footer .info{
+    margin: 10px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+.flag{
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.terms{
+    font-size: 12px;
+}

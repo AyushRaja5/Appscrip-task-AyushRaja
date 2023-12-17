@@ -1,0 +1,43 @@
+.homeheading-class{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home-title{
+    font-size: 42px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+p{
+    margin: 0 33%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media screen and (max-width: 720px){
+    .home-title{
+        width: 100%;
+        font-size: 28px;
+        display: flex;
+        justify-content: center;
+    }
+    p{
+        margin: 0 15%;
+    }
+    .homeheading-class{
+        margin-top: -10px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .home-title{
+        width: 100%;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+    }
+}
