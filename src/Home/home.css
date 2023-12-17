@@ -33,7 +33,7 @@
 }
 .mobileview span{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .total-items{
   position:relative;
