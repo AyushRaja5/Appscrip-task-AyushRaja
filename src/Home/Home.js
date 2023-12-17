@@ -1,19 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Filter from './Filter/Filter';
 import Shop from './Shop/Shop';
 import './home.css';
-import down from '../images/down.png'
+import down from '../images/down.png';
 
 const Home = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [showRecommendationDialog, setShowRecommendationDialog] = useState(false);
+  const mobileViewRef = useRef(null);
 
   const toggleFilter = () => {
     setShowFilter(!showFilter);
   };
+
   const toggleRecommendationDialog = () => {
     setShowRecommendationDialog(!showRecommendationDialog);
   };
+
+  const handleOutsideClick = (event) => {
+    if (mobileViewRef.current && !mobileViewRef.current.contains(event.target)) {
+      setShowRecommendationDialog(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showRecommendationDialog) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [showRecommendationDialog]);
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -26,18 +45,23 @@ const Home = () => {
   return (
     <div className='home-class'>
       <div className='filters-heading'>
-        <span><span className='total-items'><strong>{products.length} ITEMS</strong></span><span onClick={toggleFilter}>{showFilter ? <>Hide Filter</> : <>Filter</>}</span></span>
         <span>
-          <span onClick={toggleRecommendationDialog} className='recomded'>Recommended</span><img src={down} alt='downImg' />
+          <span className='total-items'><strong>{products.length} ITEMS</strong></span>
+          <span onClick={toggleFilter}>{showFilter ? <>Hide Filter</> : <>Filter</>}</span>
+        </span>
+        <span>
+          <div className='recom-class'>
+          <span onClick={toggleRecommendationDialog} className='recomded'>Recommended</span>
+          <img src={down} alt='downImg' />
           {showRecommendationDialog && (
-            <div className='mobileview'>
-              <span>SHOP</span>
-              <span>SKILLS</span>
-              <span>STORIES</span>
-              <span>ABOUT</span>
-              <span>CONTACT US</span>
+            <div className='mobileview' ref={mobileViewRef}>
+              <span>NEW FIRST</span>
+              <span>POPULAR</span>
+              <span>PRICE: HIGH TO LOW</span>
+              <span>PRICE: LOW TO HIGH</span>
             </div>
           )}
+          </div>
         </span>
       </div>
       <div className='main-class' style={{ gridTemplateColumns: showFilter ? '20% 1fr' : '100%' }}>
@@ -48,6 +72,6 @@ const Home = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

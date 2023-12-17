@@ -91,10 +91,13 @@
     .rating{
         display: none;
     }
+    .card-class:hover {
+        display: none;
+    }
 }
 @media screen and (max-width: 300px){
     .card-class {
-        width: 270px;
+        width: 250px;
         height: auto;
         padding: 2% 3%;
         margin: 0;

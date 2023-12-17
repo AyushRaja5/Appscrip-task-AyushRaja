@@ -40,6 +40,9 @@ p{
         display: flex;
         justify-content: center;
     }
+    p{
+        margin: 0 5%;
+    }
 }
 @media screen and (max-width: 310px){
     .home-title{
